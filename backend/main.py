@@ -1,5 +1,8 @@
 from fastapi import FastAPI
-from scraper import scrape_website
+
+from models import LinkedInRequest
+from apify_scraper import scrape_company
+from analyze import analyze_company
 
 app = FastAPI()
 
@@ -11,6 +14,15 @@ def home():
     }
 
 
-@app.get("/scrape")
-def scrape(url: str):
-    return scrape_website(url)
+@app.post("/analyze-company")
+def analyze(linkedin: LinkedInRequest):
+
+    companies = scrape_company(
+        linkedin.linkedin_url
+    )
+
+    company = companies[0]
+
+    return analyze_company(
+        company
+    )
