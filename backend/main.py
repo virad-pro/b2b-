@@ -6,7 +6,9 @@ app = FastAPI()
 
 @app.get("/")
 def home():
-    return {"message": "AI Sales Agent Running"}
+    return {
+        "message": "AI Sales Agent Running"
+    }
 
 
 @app.get("/scrape")

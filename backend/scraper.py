@@ -1,23 +1,34 @@
-import requests
-from bs4 import BeautifulSoup
+# import requests
+# from bs4 import BeautifulSoup
 
 
-def scrape_website(url):
-    try:
-        response = requests.get(url, timeout=10)
+# def scrape_website(url):
+#     try:
+#         headers = {
+#             "User-Agent": "Mozilla/5.0"
+#         }
 
-        soup = BeautifulSoup(response.text, "html.parser")
+#         response = requests.get(
+#             url,
+#             headers=headers,
+#             timeout=10
+#         )
 
-        title = soup.title.string if soup.title else "No Title"
+#         soup = BeautifulSoup(response.text, "html.parser")
 
-        text = soup.get_text(separator=" ", strip=True)
+#         title = soup.title.string if soup.title else "No Title"
 
-        return {
-            "title": title,
-            "content": text[:5000]
-        }
+#         text = soup.get_text(
+#             separator=" ",
+#             strip=True
+#         )
 
-    except Exception as e:
-        return {
-            "error": str(e)
-        }
+#         return {
+#             "title": title,
+#             "content": text[:5000]
+#         }
+
+#     except Exception as e:
+#         return {
+#             "error": str(e)
+#         }
