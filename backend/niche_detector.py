@@ -1,6 +1,8 @@
 from ollama_client import ask_llm
 import json
 
+import re
+
 
 def detect_niche(company):
 
@@ -27,13 +29,24 @@ Example:
 }}
 """
 
+
+
     response = ask_llm(prompt)
 
-    try:
-        return json.loads(response)
-    except:
-        return {
-            "industry": "Unknown",
-            "niche": "Unknown",
-            "sub_niche": "Unknown"
-        }
+    match = re.search(
+    r"\{.*\}",
+    response,
+    re.DOTALL
+)
+
+    if match:
+
+       return json.loads(
+        match.group()
+    )
+
+    return {
+    "industry": "Unknown",
+    "niche": "Unknown",
+    "sub_niche": "Unknown"
+}
