@@ -1,4 +1,4 @@
-# AI Sales Prospecting Agent
+# B2B lead Prospecting Agent
 
 An AI-powered B2B sales prospecting agent that analyzes LinkedIn company data, detects niches, identifies buying signals, scores leads, and helps sales teams focus on high-quality prospects.
 
